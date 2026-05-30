@@ -1,133 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Isle Works – 3D Portfolio</title>
 
-<script type="module"
-src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js">
-</script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
 
 <style>
-
-body{
-margin:0;
-font-family:Barlow;
-background:#ffffff;
-color:black;
+body {
+  margin: 0;
+  font-family: "fonts/Barlow-Regular.ttf", sans-serif;
+  background: #ffffff;
+  color: black;
 }
 
-header{
-text-align:center;
-padding:40px 20px;
+/* NAVBAR */
+.navbar {
+  background: #d5d2df;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-h1{
-margin:0;
-font-size:32px;
-letter-spacing:1px;
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-p{
-opacity:0.7;
+.home-icon {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:20px;
-max-width:1000px;
-margin:auto;
+.nav-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.card{
-background:#f0f0f5;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(132, 131, 131, 0.4);
-transition:0.3s;
+/* Header */
+header {
+max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px 20px;
+  text-align: left;
+  opacity: 0.8
 }
 
-.card:hover{
-transform:translateY(-5px);
+h1 {
+  margin: 0;
+  font-size: clamp(22px, 5vw, 32px);
+  letter-spacing: 1px;
 }
 
-.thumb{
-width:100%;
-height:200px;
-object-fit:cover;
-display:block;
-background:#f0f0f5;
+p {
+  opacity: 0.7;
 }
 
-.content{
-padding:15px;
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.title{
-font-size:18px;
-margin-bottom:10px;
+/* Card */
+.card {
+  background: #f2f2f5;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.button{
-display:inline-block;
-padding:10px 14px;
-margin-top:10px;
-background:#bcb3cb;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:14px;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.button:hover{
-background:#a89eb6;
+/* Thumbnail */
+.thumb {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  background: #f2f2f5;
 }
 
+/* Content */
+.content {
+  padding: 15px;
+}
+
+.title {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  padding: 10px 14px;
+  margin-top: 10px;
+  background: #bcb3cb;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.button:hover {
+  background: #a89eb6;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  .home-icon {
+    font-size: 20px;
+  }
+
+  .nav-title {
+    font-size: 14px;
+  }
+
+  header {
+    padding: 30px 15px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .grid {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .thumb {
+    height: 180px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .button {
+    width: 92%;
+    text-align: center;
+  }
+}
 </style>
 
 </head>
 
 <body>
 
-</header>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-left">
+    <a class="home-icon" href="https://tamcia.github.io/The-Isle-Works/">🏠︎</a>
+  </div>
+</div>
 
 <header>
-<h1>The Isle Works – 3D Portfolio</h1>
-<p>Select a model to explore - drift through its forms, pause on its details or bring it into your space with AR.</p>
+  <h1>The Isle Works – 3D Portfolio</h1>
+  <p>
+    Select a model to explore - drift through its forms, pause on its details
+    or bring it into your space with AR.
+  </p>
 </header>
 
 <div class="grid">
 
-<!-- CARD 1 -->
-<div class="card">
-<img class="thumb" src="thumbs/pre_prototype_thumb.png">
-<div class="content">
-<div class="title">Pre Prototype</div>
+  <!-- CARD 1 -->
+  <div class="card">
+    <img class="thumb" src="thumbs/pre_prototype_thumb.png" alt="Pre Prototype">
+    <div class="content">
+        <div class="title">The Pre Prototype</div>
+        <p class="description">
+    An early exploration of form and structure, setting the foundation for the series.
+  </p>
 <a class="button" href="the_isle_00_pre_prototype.html">Explore Model</a>
-</div>
-</div>
+    </div>
+  </div>
 
-<!-- CARD 2 -->
-<div class="card">
-<img class="thumb" src="thumbs/the_element_thumb.png">
-<div class="content">
-<div class="title">Element</div>
-<a class="button" href="the_isle_03_element.html">Explore Model</a>
-</div>
-</div>
+  <!-- CARD 2 -->
+  <div class="card">
+    <img class="thumb" src="thumbs/the_element_thumb.png" alt="Element">
+    <div class="content">
+      <div class="title">Element</div>
+      <p class="description">
+    An early exploration of form and structure, setting the foundation for the series.
+  </p>
+      <a class="button" href="the_isle_03_element.html">Explore Model</a>
+    </div>
+  </div>
 
-<!-- CARD 3 -->
-<div class="card">
-<img class="thumb" src="thumbs/03_thumb.png">
-<div class="content">
-<div class="title">The Isle 03</div>
-<a class="button" href="the_isle_03.html">Explore Model</a>
-</div>
-</div>
+  <!-- CARD 3 -->
+  <div class="card">
+    <img class="thumb" src="thumbs/03_thumb.png" alt="The Isle 03">
+    <div class="content">
+      <div class="title">The Isle 03</div>
+      <p class="description">
+    An early exploration of form and structure, setting the foundation for the series.
+  </p>
+      <a class="button" href="the_isle_03.html">Explore Model</a>
+    </div>
+  </div>
 
 </div>
 
 </body>
 </html>
+
