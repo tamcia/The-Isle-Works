@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Isle Works – 3D Portfolio</title>
+<title>Re-Imagining Innisfree</title>
 
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
 
 <style>
+
 body {
   margin: 0;
   font-family: "fonts/Barlow-Regular.ttf", sans-serif;
   background: #ffffff;
-  color: black;
+  color: #222;
 }
 
 /* NAVBAR */
+
 .navbar {
   background: #d5d2df;
   display: flex;
@@ -41,117 +44,164 @@ body {
   font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
 }
 
-.nav-title {
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-}
+/* HERO SECTION */
 
-/* Header */
-header {
-max-width: 1000px;
+.hero {
+  max-width: 1100px;
   margin: auto;
-  padding: 40px 20px 20px;
-  text-align: left;
-  opacity: 0.8
+  padding: 50px 20px 25px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
 }
 
-h1 {
+.hero-title h1 {
   margin: 0;
-  font-size: clamp(22px, 5vw, 32px);
-  letter-spacing: 1px;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.1;
+  font-weight: 600;
 }
 
-p {
-  opacity: 0.7;
+.hero-text p {
+  margin-top: 0;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  opacity: 0.8;
 }
 
-/* Grid */
+/* GRID */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
   padding: 20px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
-/* Card */
+/* CARD */
+
 .card {
   background: #f2f2f5;
   border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-/* Thumbnail */
+/* THUMBNAIL */
+
 .thumb {
   width: 100%;
-  height: 240px;
+  height: 280px;
   object-fit: cover;
   display: block;
   background: #f2f2f5;
 }
 
-/* Content */
+/* CONTENT */
+
 .content {
-  padding: 15px;
+  padding: 18px;
 }
 
 .title {
   font-size: 18px;
-  opacity: 0.8;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  opacity: 0.9;
 }
 
 .description {
   font-size: 14px;
-  opacity: 0.6;
+  line-height: 1.5;
+  opacity: 0.8;
   margin-bottom: 12px;
-  line-height: 1.4;
 }
 
-/* Button */
+/* BUTTON */
+
 .button {
   display: inline-block;
   padding: 10px 14px;
-  margin-top: 10px;
+  margin-top: 8px;
   background: #bcb3cb;
   color: white;
   text-decoration: none;
   border-radius: 8px;
   font-size: 14px;
+  transition: 0.25s ease;
 }
 
 .button:hover {
   background: #a89eb6;
 }
 
-/* Responsive */
+/* ACCORDION */
+
+.accordion-wrap {
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+.accordion {
+  width: 100%;
+  background: #bcb3cb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.accordion:hover {
+  background: #a89eb6;
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #f2f2f5;
+  border-radius: 0 0 10px 10px;
+}
+
+.panel-content {
+  padding: 20px;
+}
+
+.panel-content p {
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 35px 20px 15px;
+  }
+
+  .hero-title h1 {
+    font-size: 34px;
+  }
+
+}
+
 @media (max-width: 600px) {
-  .navbar {
-    padding: 10px 12px;
-  }
-
-  .home-icon {
-    font-size: 20px;
-  }
-
-  .nav-title {
-    font-size: 14px;
-  }
-
-  header {
-    padding: 30px 15px;
-  }
-
-  p {
-    font-size: 14px;
-  }
 
   .grid {
     gap: 15px;
@@ -159,79 +209,177 @@ p {
   }
 
   .thumb {
-    height: 180px;
-  }
-
-  .title {
-    font-size: 16px;
+    height: 220px;
   }
 
   .button {
-    width: 92%;
+    width: calc(100% - 28px);
     text-align: center;
   }
-}
-</style>
 
+}
+
+</style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
+
 <div class="navbar">
   <div class="nav-left">
-    <a class="home-icon" href="https://tamcia.github.io/The-Isle-Works/">🏠︎</a>
+    <a class="home-icon" href="https://tamcia.github.io/The-Isle-Works/">ꕤ</a>
   </div>
 </div>
 
-<header>
-  <h1>The Isle Works. 3D Portfolio</h1>
-  <p>
-    Select a model to explore - drift through its forms, pause on its details
-    or bring it into your space with AR.
-  </p>
+<!-- HERO -->
+
+<header class="hero">
+
+  <div class="hero-title">
+    <h1>
+      Re-Imagining Innisfree<br>
+    </h1>
+  </div>
+
+  <div class="hero-text">
+
+    <p>
+      A collection of scanned 3D models documenting the evolution of
+      The Isle, capturing my project's progression through
+      material experimentation, form-making and digital transformation.<br>
+      <strong>Select a model to explore:</strong>
+      drift through its forms, pause on details or place it within
+      your surroundings using AR.
+    </p>
+
+  </div>
+
 </header>
+
+<!-- GRID -->
 
 <div class="grid">
 
   <!-- CARD 1 -->
+
   <div class="card">
-    <img class="thumb" src="thumbs/pre_prototype_thumb.png" alt="Pre Prototype">
+    <img class="thumb"
+         src="thumbs/pre_prototype_thumb.png"
+         alt="Pre Prototype">
+
     <div class="content">
-        <div class="title">The Pre Prototype</div>
-        <p class="description">
-             A de-formed version of my initial paper composition, originally created to explore placement and key elements within my Innisfree world.
-  </p>
-<a class="button" href="the_isle_00_pre_prototype.html">Explore Model</a>
+
+      <div class="title">
+        The Pre Prototype
+      </div>
+
+      <p class="description">
+        A de-formed version of my first paper model,
+        created to test placement and key spatial ideas
+        for my imagined Innisfree landscape.
+      </p>
+
+      <a class="button"
+         href="the_isle_00_pre_prototype.html">
+         <strong>Explore Model</strong>
+      </a>
+
     </div>
   </div>
 
   <!-- CARD 2 -->
+
   <div class="card">
-    <img class="thumb" src="thumbs/the_element_thumb.png" alt="Element">
+    <img class="thumb"
+         src="thumbs/the_element_thumb.png"
+         alt="The Element">
+
     <div class="content">
-      <div class="title">The Element</div>
+
+      <div class="title">
+        The Element
+      </div>
+
       <p class="description">
-    Working with varied paper weights, I assembled a fragile Isle form that was easily altered through touch; through scanning, it transformed into something unexpectedly sharper, more solid and subtly unfamiliar.
-  </p>
-      <a class="button" href="the_isle_03_element.html">Explore Model</a>
+        A fragile form made from layered paper.
+        When scanned, it becomes sharper and
+        more solid, revealing an unexpected structure.
+      </p>
+
+      <a class="button"
+         href="the_isle_03_element.html">
+         <strong>Explore Model</strong>
+      </a>
+
     </div>
   </div>
 
   <!-- CARD 3 -->
+
   <div class="card">
-    <img class="thumb" src="thumbs/03_thumb.png" alt="The Isle 03">
+    <img class="thumb"
+         src="thumbs/03_thumb.png"
+         alt="The Isle 03">
+
     <div class="content">
-      <div class="title">The Isle 03</div>
+
+      <div class="title">
+        The Isle 03
+      </div>
+
       <p class="description">
-    I began Stage 03 with The Element as its core inspiration, exploring the contrast between delicate, dissolving-like materials and a stable, sharply defined wire base.
-  </p>
-      <a class="button" href="the_isle_03.html">Explore Model</a>
+        Developed from The Element. Combines soft
+        materials with a rigid wire base, exploring
+        contrast between stability and fragility.
+      </p>
+
+      <a class="button"
+         href="the_isle_03.html">
+         <strong>Explore Model</strong>
+      </a>
+
     </div>
   </div>
 
 </div>
 
+<!-- ACCORDION -->
+
+<section class="accordion-wrap">
+
+  <button class="accordion">
+    <strong>Learn More</strong>
+  </button>
+
+  <div class="panel">
+
+    <div class="panel-content">
+
+      <p>This mini portfolio presents a collection of 3D models I developed during my design process for Re-Imagining Innisfree. It traces the project's evolution from early explorations to more resolved, though still unfinished, stages. Each model represents a moment in that journey, reflecting my ongoing investigation into material, form and spatial thinking.</p> <p>In this work, I explore how delicate, handmade models transform when seen through the lens of a camera and digital processing. Created through touch, intuition and an engagement with material qualities, my physical models are layered, fragile and ephemeral. When translated into digital form, they take on  a different character: the camera sharpens and re-interprets them, turning them into prompts for further transformation. <p>Working digitally also allows me to explore scale. Through augmented reality (AR), the models can be placed within space, suggesting how they might be experienced as physical environments.</p> <p>These scanned Isle forms act, for me, as a thinking tool for imagining a final spatial experience, inspired by both the poem and the physical Isle of Innisfree.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+const accordion = document.querySelector(".accordion");
+const panel = document.querySelector(".panel");
+
+accordion.addEventListener("click", () => {
+
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+
+});
+
+</script>
+
 </body>
 </html>
-
