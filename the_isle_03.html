@@ -1,143 +1,117 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Isle 03 — The Isle Works</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts: Consistent with Portfolio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Scope+One&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Model Viewer Module -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
 
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            offwhite: '#F4F3EF',
+            snowwhite: '#FAFAFA',
+            charcoal: '#2A2A2A',
+            taupe: '#CFCAC2',
+            lilacgrey: '#D6D0E6',
+            brandlavender: '#A49CBA',
+          },
+          fontFamily: {
+            headline: ['"Scope One"', 'serif'],
+            sans: ['"Josefin Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
 
-<style>
-body {
-  margin: 0;
-  font-family: "fonts/Barlow-Regular.ttf", sans-serif;
-}
+  <style>
+    body {
+      background-color: #F4F3EF;
+      color: #2A2A2A;
+      font-family: 'Josefin Sans', sans-serif;
+      overflow: hidden;
+    }
 
-/* NAVBAR */
-.navbar {
-  background: #d5d2df;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.home-icon {
-  color: white;
-  font-size: 22px;
-  text-decoration: none;
-   font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
-}
-
-/* Loading text */
-#loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-  opacity: 0.8;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
-}
-
-/* Viewer */
-model-viewer {
-  width: 100vw;
-  height: calc(100vh - 60px); /* subtract navbar height */
-}
-
-
-model-viewer::part(default-progress-bar) {
-  display: none;
-}
-
-/* AR Button (styled like homepage button) */
-.ar-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-
-  padding: 10px 14px;
-
-  background: #bcb3cb;
-  color: white;
-
-  border: none;
-  border-radius: 8px;
-
-  font-size: 14px;
-  font-family: "fonts/Barlow-Regular.ttf", sans-serif;
-
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* Hover */
-.ar-button:hover {
-  background: #a89eb6;
-  transform: translateY(-2px);
-}
-
-/* Hide AR button on desktop (shows only on touch/mobile devices) */
-@media (hover: hover) and (pointer: fine) {
-  .ar-button {
-    display: none !important;
-  }
-}
-</style>
-
+    model-viewer::part(default-progress-bar) {
+      display: none;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+    .animate-pulse-slow {
+      animation: pulse 1.5s infinite;
+    }
+  </style>
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col">
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="nav-left">
-    <a class="home-icon" href="https://tamcia.github.io/The-Isle-Works/">ꕤ</a>
+  <!-- Navigation bar (Matches Portfolio) -->
+  <nav class="bg-snowwhite border-b border-taupe/30 px-6 py-4 md:px-12 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a class="flex items-center gap-3 group focus:outline-none" href="https://tamcia.github.io/The-Isle-Works/">
+        <svg class="w-8 h-8 text-charcoal group-hover:text-brandlavender transition-colors duration-300 transform group-hover:rotate-6" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,15 C60,15 72,25 72,40 C72,55 58,58 50,58 C42,58 28,55 28,40 C28,25 40,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50,85 C60,85 78,75 78,60 C78,45 58,45 50,45 C42,45 22,45 22,60 C22,75 40,85 50,85 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50,15 L50,85" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <circle cx="50" cy="50" r="3" fill="currentColor"/>
+        </svg>
+        <span class="font-headline tracking-widest text-sm uppercase opacity-90 group-hover:opacity-100 group-hover:text-brandlavender transition-all duration-300">
+          The Isle Works
+        </span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Loading State -->
+  <div id="loading" class="fixed inset-0 flex items-center justify-center bg-offwhite z-40 animate-pulse-slow font-sans uppercase tracking-widest text-sm text-charcoal">
+    Loading The Isle 03...
   </div>
-</div>
 
-<div id="loading">Loading The Isle 03...</div>
+  <!-- Viewer -->
+  <main class="flex-grow w-full h-[calc(100vh-73px)]">
+    <model-viewer
+      src="models/The_Isle_03.glb"
+      ios-src="models/The_Isle_03.usdz"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      auto-rotate
+      class="w-full h-full">
 
-<model-viewer
-  src="models/The_Isle_03.glb"
-  ios-src="models/The_Isle_03.usdz"
-  ar
-  ar-modes="webxr scene-viewer quick-look"
-  camera-controls
-  auto-rotate>
+      <!-- Brand-Aligned AR Button -->
+      <button slot="ar-button" class="absolute bottom-6 right-6 px-6 py-3 bg-lilacgrey hover:bg-brandlavender text-charcoal hover:text-white rounded-lg text-xs uppercase tracking-widest font-sans transition-all duration-300 shadow-sm border border-taupe/20">
+        View in AR
+      </button>
 
-  <!-- AR button -->
-  <button slot="ar-button" class="ar-button">
-    <strong>View in AR</strong>
-  </button>
+    </model-viewer>
+  </main>
 
-</model-viewer>
+  <script>
+    const viewer = document.querySelector("model-viewer");
+    const loader = document.getElementById("loading");
 
-<script>
-const viewer = document.querySelector("model-viewer");
-
-viewer.addEventListener("load", () => {
-  document.getElementById("loading").style.display = "none";
-});
-</script>
+    viewer.addEventListener("load", () => {
+      loader.style.display = "none";
+    });
+  </script>
 
 </body>
 </html>

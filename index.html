@@ -2,396 +2,314 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Re-Imagining Innisfree — Portfolio</title>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Re-Imagining Innisfree</title>
+  <!-- Google Fonts: Scope One (Headlines) & Josefin Sans (Secondary & Body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Scope+One&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            offwhite: '#F4F3EF',       // Primary Off-White
+            snowwhite: '#FAFAFA',      // Primary Snow-like White
+            charcoal: '#2A2A2A',       // Primary Soft Charcoal
+            stonebeige: '#E8E2D9',     // Secondary Pale Stone Beige
+            taupe: '#CFCAC2',          // Secondary Soft Taupe
+            coolgrey: '#D2D6DB',       // Secondary Cool Pale Grey
+            lilacgrey: '#D6D0E6',      // Accent Lilac Grey
+            brandlavender: '#A49CBA',  // Custom Requested Accent Color
+          },
+          fontFamily: {
+            headline: ['"Scope One"', 'serif'],
+            sans: ['"Josefin Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
 
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+  <style>
+    body {
+      background-color: #F4F3EF;
+      color: #2A2A2A;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
 
-<style>
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F3EF;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CFCAC2;
+      border-radius: 3px;
+    }
 
-body {
-  margin: 0;
-  font-family: "fonts/Barlow-Regular.ttf", sans-serif;
-  background: #ffffff;
-  color: #222;
-}
-
-/* NAVBAR */
-
-.navbar {
-  background: #d5d2df;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.home-icon {
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-  font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
-}
-
-/* HERO SECTION */
-
-.hero {
-  max-width: 1100px;
-  margin: auto;
-  padding: 50px 20px 25px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.hero-title h1 {
-  margin: 0;
-  font-size: clamp(30px, 4vw, 52px);
-  line-height: 1.1;
-  font-weight: 600;
-}
-
-.hero-text p {
-  margin-top: 0;
-  margin-bottom: 18px;
-  line-height: 1.6;
-  opacity: 0.8;
-}
-
-/* GRID */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* CARD */
-
-.card {
-  background: #f2f2f5;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-}
-
-/* THUMBNAIL */
-
-.thumb {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-  background: #f2f2f5;
-}
-
-/* CONTENT */
-
-.content {
-  padding: 18px;
-}
-
-.title {
-  font-size: 18px;
-  margin-bottom: 8px;
-  opacity: 0.9;
-}
-
-.description {
-  font-size: 14px;
-  line-height: 1.5;
-  opacity: 0.8;
-  margin-bottom: 12px;
-}
-
-.hero-text a {
-  color: inherit;          /* matches your text color */
-  text-decoration: none;   /* removes underline */
-  font-weight: 500;
-  border-bottom: 1px solid #bcb3cb; /* subtle brand accent */
-}
-
-.hero-text a:hover {
-  color: #bcb3cb;
-  border-bottom: 1px solid #a89eb6;
-}
-
-/* BUTTON */
-
-.button {
-  display: inline-block;
-  padding: 10px 14px;
-  margin-top: 8px;
-  background: #bcb3cb;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: 0.25s ease;
-}
-
-.button:hover {
-  background: #a89eb6;
-}
-
-/* ACCORDION */
-
-.accordion-wrap {
-  max-width: 1100px;
-  margin: 40px auto 60px;
-  padding: 0 20px;
-}
-
-.accordion {
-  width: 100%;
-  background: #bcb3cb;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 16px 20px;
-  font-size: 15px;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.accordion:hover {
-  background: #a89eb6;
-}
-
-.panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: #f2f2f5;
-  border-radius: 0 0 10px 10px;
-}
-
-.panel-content {
-  padding: 20px;
-}
-
-.panel-content p {
-  line-height: 1.7;
-  opacity: 0.85;
-}
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 35px 20px 15px;
-  }
-
-  .hero-title h1 {
-    font-size: 34px;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .grid {
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .thumb {
-    height: 220px;
-  }
-
-  .button {
-    width: calc(100% - 28px);
-    text-align: center;
-  }
-
-}
-
-</style>
+    .panel-transition {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  </style>
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col bg-offwhite text-charcoal relative selection:bg-coolgrey/30 selection:text-charcoal">
 
-<!-- NAVBAR -->
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-snowwhite border-b border-taupe/30 px-6 py-4 md:px-12 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a class="flex items-center gap-3 group focus:outline-none" href="https://tamcia.github.io/The-Isle-Works/">
+        <svg class="w-8 h-8 text-charcoal group-hover:text-brandlavender transition-colors duration-300 transform group-hover:rotate-6" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,15 C60,15 72,25 72,40 C72,55 58,58 50,58 C42,58 28,55 28,40 C28,25 40,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50,85 C60,85 78,75 78,60 C78,45 58,45 50,45 C42,45 22,45 22,60 C22,75 40,85 50,85 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50,15 L50,85" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <circle cx="50" cy="50" r="3" fill="currentColor"/>
+        </svg>
+        <span class="font-headline tracking-widest text-sm uppercase opacity-90 group-hover:opacity-100 group-hover:text-brandlavender transition-all duration-300">
+          The Isle Works
+        </span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-sans font-light">
+        <a href="#portfolio" class="hover:text-brandlavender transition-colors duration-300">Portfolio</a>
+        <a href="#about" class="hover:text-brandlavender transition-colors duration-300">About</a>
+        <a href="#contact" class="hover:text-brandlavender transition-colors duration-300">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-<div class="navbar">
-  <div class="nav-left">
-    <a class="home-icon" href="https://tamcia.github.io/The-Isle-Works/">ꕤ</a>
-  </div>
-</div>
+  <!-- Hero Section -->
+  <header class="max-w-6xl mx-auto px-6 pt-16 pb-12 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+    <div class="md:col-span-5 border-l-2 border-taupe/30 pl-6 py-2">
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-charcoal leading-none tracking-tight">
+        Re-Imagining<br>Innisfree
+      </h1>
+      <p class="text-xs font-sans tracking-widest uppercase text-taupe mt-3 font-light">
+        Atmospheric Approaches to Heritage Design
+      </p>
+    </div>
 
-<!-- HERO -->
+    <div class="md:col-span-7 space-y-4 text-[15px] md:text-[17px] leading-relaxed text-charcoal/90 font-sans font-light">
+      <p>
+        A collection of scanned 3D models documenting the evolution of The Isle, 
+        this body of work reflects my ongoing exploration of material, form and digital transformation.
+      </p>
+      <p class="text-[14px] md:text-[15px] tracking-wide text-charcoal/85">
+        Select a model to explore: drift through its forms, pause on details, or place it within your surroundings using AR.
+      </p>
+    </div>
+  </header>
 
-<header class="hero">
+  <!-- Portfolio -->
+  <main id="portfolio" class="max-w-6xl mx-auto px-6 py-12 md:px-12 w-full flex-grow">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
 
-  <div class="hero-title">
-    <h1>
-      Re-Imagining Innisfree<br>
-    </h1>
-  </div>
+      <!-- CARD 1 -->
+      <article class="group bg-snowwhite rounded-xl overflow-hidden border border-taupe/25 hover:border-coolgrey transition-all duration-500 flex flex-col justify-between">
+        <div class="p-3">
+          <div class="overflow-hidden rounded-lg aspect-square bg-stonebeige/20 relative">
+            <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                 src="thumbs/pre_prototype_thumb.png"
+                 alt="The Pre Prototype"
+                 onerror="this.src='https://placehold.co/600x600/E8E2D9/2A2A2A?text=Pre+Prototype'">
+            <div class="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-500"></div>
+          </div>
+        </div>
+        <div class="p-6 pt-2 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="font-headline text-2xl text-charcoal mb-3 transition-colors duration-300">
+              The Pre Prototype
+            </h2>
+            <p class="text-sm font-sans font-light leading-relaxed text-charcoal/80 mb-6">
+              A de-formed version of my first paper model, created to test placement and key spatial ideas for my imagined Innisfree landscape.
+            </p>
+          </div>
+          <a class="w-full inline-flex items-center justify-center py-3 px-4 bg-lilacgrey hover:bg-brandlavender hover:text-snowwhite rounded-lg text-xs uppercase tracking-widest font-sans font-light text-charcoal transition-all duration-300"
+             href="the_isle_00_pre_prototype.html">
+            Explore Model
+          </a>
+        </div>
+      </article>
 
-  <div class="hero-text">
-<p>
-A collection of scanned 3D models documenting the evolution of The Isle, 
-this body of work reflects my ongoing exploration of material, form and digital transformation.<p>
-<strong>Select a model to explore:</strong> drift through its forms, pause on details or place it 
-within your surroundings using AR.<p>
-If you feel curious to learn more or wish to share your thoughts, I warmly invite you 
-to connect with me, the designer, Tamara Pelaczyk -
-visit my <a href="https://www.linkedin.com/in/tamara-pelaczyk" target="_blank"><strong>LinkedIn</strong></a> 
-or <a href="mailto:tamara.pelaczyk@gmail.com"><strong>send me an email</strong></a>.
-</p>
-  </div>
+      <!-- CARD 2 -->
+      <article class="group bg-snowwhite rounded-xl overflow-hidden border border-taupe/25 hover:border-coolgrey transition-all duration-500 flex flex-col justify-between">
+        <div class="p-3">
+          <div class="overflow-hidden rounded-lg aspect-square bg-stonebeige/20 relative">
+            <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                 src="thumbs/the_element_thumb.png"
+                 alt="The Element"
+                 onerror="this.src='https://placehold.co/600x600/E8E2D9/2A2A2A?text=The+Element'">
+            <div class="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-500"></div>
+          </div>
+        </div>
+        <div class="p-6 pt-2 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="font-headline text-2xl text-charcoal mb-3 transition-colors duration-300">
+              The Element
+            </h2>
+            <p class="text-sm font-sans font-light leading-relaxed text-charcoal/80 mb-6">
+              A fragile form made from layered paper. When scanned, it becomes sharper and more solid, revealing an unexpected digital structure.
+            </p>
+          </div>
+          <a class="w-full inline-flex items-center justify-center py-3 px-4 bg-lilacgrey hover:bg-brandlavender hover:text-snowwhite rounded-lg text-xs uppercase tracking-widest font-sans font-light text-charcoal transition-all duration-300"
+             href="the_isle_03_element.html">
+            Explore Model
+          </a>
+        </div>
+      </article>
 
-</header>
+      <!-- CARD 3 -->
+      <article class="group bg-snowwhite rounded-xl overflow-hidden border border-taupe/25 hover:border-coolgrey transition-all duration-500 flex flex-col justify-between">
+        <div class="p-3">
+          <div class="overflow-hidden rounded-lg aspect-square bg-stonebeige/20 relative">
+            <img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                 src="thumbs/03_thumb.png"
+                 alt="The Isle 03"
+                 onerror="this.src='https://placehold.co/600x600/E8E2D9/2A2A2A?text=The+Isle+03'">
+            <div class="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-500"></div>
+          </div>
+        </div>
+        <div class="p-6 pt-2 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="font-headline text-2xl text-charcoal mb-3 transition-colors duration-300">
+              The Isle 03
+            </h2>
+            <p class="text-sm font-sans font-light leading-relaxed text-charcoal/80 mb-6">
+              Developed from The Element. Combines soft materials with a rigid wire base, exploring contrasts between stability and fragility.
+            </p>
+          </div>
+          <a class="w-full inline-flex items-center justify-center py-3 px-4 bg-lilacgrey hover:bg-brandlavender hover:text-snowwhite rounded-lg text-xs uppercase tracking-widest font-sans font-light text-charcoal transition-all duration-300"
+             href="the_isle_03.html">
+            Explore Model
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
 
-<!-- GRID -->
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto w-full px-6 pb-20 md:px-12">
+    <div class="bg-snowwhite rounded-xl border border-taupe/30 overflow-hidden">
+      <button id="accordion-btn" class="accordion w-full flex justify-between items-center px-6 py-5 text-left bg-snowwhite hover:bg-taupe transition-colors duration-300 focus:outline-none group">
+        <span class="font-headline text-xl tracking-widest text-charcoal transition-colors duration-300">
+          ABOUT
+        </span>
+        <svg class="w-5 h-5 text-taupe group-hover:text-charcoal transform transition-transform duration-500" id="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
 
-<div class="grid">
+      <div class="panel-transition" id="accordion-panel">
+        <div class="p-6 md:p-8 border-t border-taupe/20 space-y-6 text-sm md:text-base text-charcoal/85 leading-relaxed font-sans font-light">
+          <p>
+            This mini portfolio presents a collection of 3D models I developed during my design process for Re-Imagining Innisfree. It traces the project's evolution from early explorations to more resolved, though still unfinished, stages. Each model represents a moment in that journey, reflecting my ongoing investigation into material, form and spatial thinking.
+          </p> 
+          <p>
+            In this work, I explore how delicate, handmade models transform when seen through the lens of a camera and digital processing. Created through touch, intuition and an engagement with material qualities, my physical models are layered, fragile and ephemeral. When translated into digital form, they take on a different character: the camera sharpens and re-interprets them, turning them into prompts for further transformation.
+          </p> 
+          <p>
+            Working digitally allows me to explore scale. Through augmented reality (AR), the models can be placed within space, suggesting how they might be experienced as physical environments. These scanned Isle forms act, for me, as a thinking tool for imagining a final spatial experience, inspired by both the poem and the physical Isle of Innisfree.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- CARD 1 -->
-
-  <div class="card">
-    <img class="thumb"
-         src="thumbs/pre_prototype_thumb.png"
-         alt="Pre Prototype">
-
-    <div class="content">
-
-      <div class="title">
-        The Pre Prototype
+  <!-- Footer -->
+  <footer id="contact" class="mt-auto bg-stonebeige/20 border-t border-taupe/35 py-12 px-6 md:px-12 text-charcoal">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Col 1: Name and Title -->
+      <div class="space-y-1">
+        <h3 class="font-headline text-xl tracking-wide">
+          Tamara Pelaczyk
+        </h3>
+        <span class="text-xs font-sans font-light uppercase tracking-widest text-taupe block">
+          EXPERIENCE AND MATERIAL DESIGNER
+        </span>
       </div>
 
-      <p class="description">
-        A de-formed version of my first paper model,
-        created to test placement and key spatial ideas
-        for my imagined Innisfree landscape.
-      </p>
+      <!-- Col 2: Empty Spacer -->
+      <div class="hidden md:block"></div>
+      
+      <!-- Col 3: Contact, Email, LinkedIn, Copyright -->
+      <div class="space-y-6">
+        <div class="space-y-3">
+          <h4 class="text-xs font-sans uppercase tracking-widest text-taupe font-light">
+            CONTACT
+          </h4>
+          <div class="space-y-3 text-sm font-sans font-light">
+            <p class="text-[13px] text-charcoal/70 tracking-wide">
+              For further information, collaboration or conversation:
+            </p>
+            <a class="block hover:text-brandlavender transition-all duration-300 w-fit text-[15px] underline underline-offset-4 decoration-taupe/45" href="mailto:100545270@unimail.derby.ac.uk">
+              100545270@unimail.derby.ac.uk
+            </a>
+            <a class="group inline-flex items-center gap-2 text-charcoal hover:text-brandlavender transition-all duration-300 text-[15px] font-sans font-light underline underline-offset-4 decoration-taupe/45" href="https://www.linkedin.com/in/tamara-pelaczyk/" target="_blank">
+              <svg class="w-4 h-4 text-charcoal/70 group-hover:text-brandlavender transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              tamara-pelaczyk
+            </a>
+          </div>
+        </div>
 
-      <a class="button"
-         href="the_isle_00_pre_prototype.html">
-         <strong>Explore Model</strong>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- CARD 2 -->
-
-  <div class="card">
-    <img class="thumb"
-         src="thumbs/the_element_thumb.png"
-         alt="The Element">
-
-    <div class="content">
-
-      <div class="title">
-        The Element
+        <div class="border-t border-taupe/20 pt-6 text-xs font-sans font-light text-charcoal/60">
+          <p>&copy; 2026 Tamara Pelaczyk. Designing matter, memory and atmosphere</p>
+        </div>
       </div>
-
-      <p class="description">
-        A fragile form made from layered paper.
-        When scanned, it becomes sharper and
-        more solid, revealing an unexpected structure.
-      </p>
-
-      <a class="button"
-         href="the_isle_03_element.html">
-         <strong>Explore Model</strong>
-      </a>
-
     </div>
-  </div>
+  </footer>
 
-  <!-- CARD 3 -->
+  <script>
+    // Accordion interaction logic
+    const accordionBtn = document.getElementById("accordion-btn");
+    const panel = document.getElementById("accordion-panel");
+    const icon = document.getElementById("accordion-icon");
 
-  <div class="card">
-    <img class="thumb"
-         src="thumbs/03_thumb.png"
-         alt="The Isle 03">
+    accordionBtn.addEventListener("click", () => {
+      if (panel.style.maxHeight) {
+        // Closing
+        panel.style.maxHeight = null;
+        icon.classList.remove("rotate-180");
+      } else {
+        // Opening
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        icon.classList.add("rotate-180");
+      }
+    });
 
-    <div class="content">
-
-      <div class="title">
-        The Isle 03
-      </div>
-
-      <p class="description">
-        Developed from The Element. Combines soft
-        materials with a rigid wire base, exploring
-        contrast between stability and fragility.
-      </p>
-
-      <a class="button"
-         href="the_isle_03.html">
-         <strong>Explore Model</strong>
-      </a>
-
-    </div>
-  </div>
-
-</div>
-
-<!-- ACCORDION -->
-
-<section class="accordion-wrap">
-
-  <button class="accordion">
-    <strong>Learn More</strong>
-  </button>
-
-  <div class="panel">
-
-    <div class="panel-content">
-
-      <p>This mini portfolio presents a collection of 3D models I developed during my design process for Re-Imagining Innisfree. It traces the project's evolution from early explorations to more resolved, though still unfinished, stages. Each model represents a moment in that journey, reflecting my ongoing investigation into material, form and spatial thinking.</p> <p>In this work, I explore how delicate, handmade models transform when seen through the lens of a camera and digital processing. Created through touch, intuition and an engagement with material qualities, my physical models are layered, fragile and ephemeral. When translated into digital form, they take on  a different character: the camera sharpens and re-interprets them, turning them into prompts for further transformation. <p>Working digitally also allows me to explore scale. Through augmented reality (AR), the models can be placed within space, suggesting how they might be experienced as physical environments.</p> <p>These scanned Isle forms act, for me, as a thinking tool for imagining a final spatial experience, inspired by both the poem and the physical Isle of Innisfree.</p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<script>
-
-const accordion = document.querySelector(".accordion");
-const panel = document.querySelector(".panel");
-
-accordion.addEventListener("click", () => {
-
-  if (panel.style.maxHeight) {
-    panel.style.maxHeight = null;
-  } else {
-    panel.style.maxHeight = panel.scrollHeight + "px";
-  }
-
-});
-
-</script>
-
+    // Smooth scroll adjustment
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          const navHeight = document.querySelector('nav').offsetHeight;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
