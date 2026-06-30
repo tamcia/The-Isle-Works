@@ -58,6 +58,16 @@
     .animate-pulse-slow {
       animation: pulse 1.5s infinite;
     }
+
+    /* Only show AR button on touch devices */
+    #ar-button {
+      display: none;
+    }
+    @media (pointer: coarse) {
+      #ar-button {
+        display: block;
+      }
+    }
   </style>
 </head>
 
@@ -86,7 +96,7 @@
   </div>
 
   <!-- Viewer -->
-  <main class="flex-grow w-full h-[calc(100vh-73px)]">
+  <main class="flex-grow w-full h-[calc(100vh-73px)] relative">
     <model-viewer
       src="models/The_Isle_03_element.glb"
       ios-src="models/The_Isle_03_element.usdz"
@@ -95,21 +105,26 @@
       camera-controls
       auto-rotate
       class="w-full h-full">
-
-      <!-- Brand-Aligned AR Button -->
-      <button slot="ar-button" class="absolute bottom-6 right-6 px-6 py-3 bg-lilacgrey hover:bg-brandlavender text-charcoal hover:text-white rounded-lg text-xs uppercase tracking-widest font-sans transition-all duration-300 shadow-sm border border-taupe/20">
-        View in AR
-      </button>
-
     </model-viewer>
+
+    <!-- AR Button placed outside viewer to ensure visibility on all devices -->
+    <button id="ar-button" class="fixed bottom-6 right-6 px-6 py-3 bg-lilacgrey hover:bg-brandlavender text-charcoal hover:text-white rounded-lg text-xs uppercase tracking-widest font-sans transition-all duration-300 shadow-sm border border-taupe/20 z-[100]">
+      View in AR
+    </button>
   </main>
 
   <script>
     const viewer = document.querySelector("model-viewer");
     const loader = document.getElementById("loading");
+    const arButton = document.getElementById("ar-button");
 
     viewer.addEventListener("load", () => {
       loader.style.display = "none";
+    });
+
+    // Trigger AR manually when the external button is clicked
+    arButton.addEventListener("click", () => {
+      viewer.activateAR();
     });
   </script>
 
