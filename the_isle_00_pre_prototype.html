@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Isle Works — Model Viewer</title>
+  <title>The Isle 03 — The Isle Works</title>
 
   <!-- Google Fonts: Consistent with Portfolio -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
       background-color: #F4F3EF;
       color: #2A2A2A;
       font-family: 'Josefin Sans', sans-serif;
-      overflow: hidden; /* Prevent scrolling inside viewer */
+      overflow: hidden;
     }
 
     model-viewer::part(default-progress-bar) {
@@ -57,6 +57,16 @@
     }
     .animate-pulse-slow {
       animation: pulse 1.5s infinite;
+    }
+
+    /* Only show AR button on touch devices */
+    #ar-button {
+      display: none;
+    }
+    @media (pointer: coarse) {
+      #ar-button {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -82,14 +92,14 @@
 
   <!-- Loading State -->
   <div id="loading" class="fixed inset-0 flex items-center justify-center bg-offwhite z-40 animate-pulse-slow font-sans uppercase tracking-widest text-sm text-charcoal">
-    Loading Pre Prototype...
+    Loading The Pre Prototype...
   </div>
 
   <!-- Viewer -->
   <main class="flex-grow w-full h-[calc(100vh-73px)] relative">
     <model-viewer
-      src="models/The_Isle_00_pre_prototype.glb"
-      ios-src="models/The_Isle_00_pre_prototype.usdz"
+      src="models/The_Pre-Prototype.glb"
+      ios-src="models/The_Pre-Prototype.usdz"
       ar
       ar-modes="webxr scene-viewer quick-look"
       camera-controls
@@ -97,18 +107,11 @@
       class="w-full h-full">
     </model-viewer>
 
-    <!-- AR Button placed outside for fixed positioning -->
-   <button id="ar-button" class="fixed bottom-6 right-6 px-6 py-3 bg-lilacgrey hover:bg-brandlavender text-charcoal hover:text-snowwhite rounded-lg text-xs uppercase tracking-widest font-sans font-light transition-all duration-300 shadow-sm border border-taupe/20 z-[100]">
-  View in AR
-</button>
+    <!-- AR Button matching the index page buttons exactly -->
+    <button id="ar-button" class="fixed bottom-6 right-6 px-4 py-3 bg-lilacgrey hover:bg-brandlavender text-charcoal hover:text-snowwhite rounded-lg text-xs uppercase tracking-widest font-sans font-thin transition-all duration-300 z-[100]">
+      View in AR
+    </button>
   </main>
-
-  <style>
-    /* Show button only on touch devices */
-    @media (pointer: coarse) {
-      #ar-button { display: block !important; }
-    }
-  </style>
 
   <script>
     const viewer = document.querySelector("model-viewer");
@@ -124,5 +127,6 @@
       viewer.activateAR();
     });
   </script>
+
 </body>
 </html>
